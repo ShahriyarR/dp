@@ -41,5 +41,74 @@ def max_profit(grid: list[list[int]]) -> int:
                 dp[i][j] += dp[i-1][j]
             elif j > 0:
                 dp[i][j] += dp[i][j-1]
+    # Input Grid:
+    # [ 0  2  2  50]
+    # [ 3  1  1 100]
+    # [ 4  4  2   0]
+
+    # DP States:
+
+    # Initial state (dp[0][0] = grid[0][0]):
+    # [ 0  0  0   0]
+    # [ 0  0  0   0]
+    # [ 0  0  0   0]
+
+    # After (0,1): value + left
+    # [ 0  2  0   0]
+    # [ 0  0  0   0]
+    # [ 0  0  0   0]
+
+    # After (0,2): value + left
+    # [ 0  2  4   0]
+    # [ 0  0  0   0]
+    # [ 0  0  0   0]
+
+    # After (0,3): value + left
+    # [ 0  2  4  54]
+    # [ 0  0  0   0]
+    # [ 0  0  0   0]
+
+    # After (1,0): value + up
+    # [ 0  2  4  54]
+    # [ 3  0  0   0]
+    # [ 0  0  0   0]
+
+    # After (1,1): value + max(up,left)
+    # [ 0  2  4  54]
+    # [ 3  4  0   0]
+    # [ 0  0  0   0]
+
+    # After (1,2): value + max(up,left)
+    # [ 0  2  4  54]
+    # [ 3  4  5   0]
+    # [ 0  0  0   0]
+
+    # After (1,3): value + max(up,left)
+    # [ 0  2  4  54]
+    # [ 3  4  5 154]
+    # [ 0  0  0   0]
+
+    # After (2,0): value + up
+    # [ 0  2  4  54]
+    # [ 3  4  5 154]
+    # [ 7  0  0   0]
+
+    # After (2,1): value + max(up,left)
+    # [ 0  2  4  54]
+    # [ 3  4  5 154]
+    # [ 7 11  0   0]
+
+    # After (2,2): value + max(up,left)
+    # [ 0  2  4  54]
+    # [ 3  4  5 154]
+    # [ 7 11 13   0]
+
+    # Final state (2,3): value + max(up,left)
+    # [ 0  2  4  54]
+    # [ 3  4  5 154]
+    # [ 7 11 13 154]
+
+    # Result: 154
+
     
     return dp[m-1][n-1]
